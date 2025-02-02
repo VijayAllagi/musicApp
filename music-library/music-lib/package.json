@@ -1,5 +1,5 @@
 {
-  "name": "music-lib",
+  "name": "music-library",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.8",

@@ -1,5 +1,5 @@
 import React from 'react';
-import MusicLibrary from './components/MusicLibrary/MusicLibrary';
+import MusicLibrary from './MusicLibrary';
 
 const App: React.FC = () => {
     return (

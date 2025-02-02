@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  { songs }  from "../../data/songs";
+import  { songs }  from "./data/songs";
 
 interface Song {
   title: string;

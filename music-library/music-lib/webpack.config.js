@@ -1,10 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
-const deps = require("./package.json").dependencies;
+const { dependencies } = require('./package.json');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -27,11 +27,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -43,23 +38,25 @@ module.exports = {
       },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
     new ModuleFederationPlugin({
       name: "musicLibraryApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./MusicLibrary": "./src/components/MusicLibrary/MusicLibrary.tsx",
+        './MusicLibrary': './src/MusicLibrary.tsx',
       },
       shared: {
-        react: {
-          singleton: true,
+        ...dependencies,
+        react : {
+          eager: true
         },
-        'react-dom': {
-          singleton: true,
-        },
+        "react-dom" : {
+          eager: true
+        }
       },
     }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
+
   ],
 };

@@ -31,7 +31,6 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
       <div className="min-h-screen bg-gray-100 p-4">
         <Routes>
           <Route path="/login" element={<Login login={login} />} />
@@ -47,7 +46,6 @@ const App: React.FC = () => {
         />
         </Routes>
       </div>
-    </Router>
   );
 };
 

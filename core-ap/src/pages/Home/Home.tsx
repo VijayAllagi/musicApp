@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Role } from "../../auth/auth";
-// const MusicLibrary = lazy(() => import('musicLibraryApp/MusicLibrary'));
+const MusicLibrary = lazy(() => import('musicLibraryApp/MusicLibrary'));
 
 interface HomeProps {
   role: Role | null;
@@ -31,12 +31,12 @@ const Home: React.FC<HomeProps> = ({ role, logout }) => {
       <h1 className="text-2xl font-bold mb-4">Welcome, {role ? role.toUpperCase() : "Guest"}!</h1>
       {role === "admin" && <p className="mb-4">You have admin privileges.</p>}
       {role === "user" && <p className="mb-4">You are logged in as a user.</p>}
-      {/* <ErrorBoundary>
+      <ErrorBoundary>
 
         <Suspense fallback={<div>Loading Music Library...</div>}>
           <MusicLibrary />
         </Suspense>
-      </ErrorBoundary> */}
+      </ErrorBoundary>
       <button
         className="bg-red-500 text-white px-4 py-2 rounded"
         onClick={logout}

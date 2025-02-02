@@ -1,15 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
-const deps = require("./package.json").dependencies;
+const { ModuleFederationPlugin } = require('webpack').container;
+const { dependencies } = require('./package.json');
 
 module.exports = {
-  entry: './src/index.tsx',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: "http://localhost:3001/",
-  },
+  entry: './src/index.ts',
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: 'bundle.js',
+  //   publicPath: "http://localhost:3001/",
+  // },
   mode: "development",
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -27,11 +27,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -49,25 +44,25 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'coreAp',
       remotes: {
-        musicLibraryApp: 'musicLibraryApp@http://localhost:3000/remoteEntry.js',
+        musicLibraryApp: `musicLibraryApp@http://localhost:3000/remoteEntry.js`
       },
       shared: {
-        ...deps,
+        ...dependencies,
         react: {
           singleton: true,
-          requiredVersion: deps.react,
-          eager: false,
+          requiredVersion: dependencies.react,
+          eager: true,
         },
         'react-dom': {
           singleton: true,
-          requiredVersion: deps['react-dom'],
-          eager: false,
+          requiredVersion: dependencies['react-dom'],
+          eager: true,
         },
         'jose': {
           singleton: true,
-          requiredVersion: deps['jose'],
-          version: deps['jose'],
-          eager: false,
+          requiredVersion: dependencies['jose'],
+          version: dependencies['jose'],
+          eager: true,
         },
       },
     }),
