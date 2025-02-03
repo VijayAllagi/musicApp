@@ -1,28 +1,41 @@
 {
   "name": "core-ap",
   "version": "1.0.0",
+  "homepage": "https://VijayAllagi.github.io/musicApp",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jose": "^5.9.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "jose": "^5.9.6",
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
+    "babel-jest": "^29.7.0",
     "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "style-loader": "^4.0.0",
+    "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
     "webpack": "^5.97.1",
